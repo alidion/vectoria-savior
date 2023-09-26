@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://i5op7mmhugbf"]
+
+[ext_resource type="Script" path="res://Scenes/Items/Gun.gd" id="1_6yng6"]
+[ext_resource type="Texture2D" uid="uid://bxbtbq5wgwaa5" path="res://Assets/Items/gun.png" id="2_gw6jn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rxkja"]
+size = Vector2(16, 16)
+
+[node name="Gun" type="Area2D"]
+script = ExtResource("1_6yng6")
+
+[node name="GunImage" type="Sprite2D" parent="."]
+texture = ExtResource("2_gw6jn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rxkja")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

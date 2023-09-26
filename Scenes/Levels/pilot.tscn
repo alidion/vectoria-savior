@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://7ikf57ab7dol"]
+
+[ext_resource type="Script" path="res://Scenes/Levels/GameController.gd" id="1_02sd1"]
+[ext_resource type="Texture2D" uid="uid://cey70nq2qdeg6" path="res://Assets/Levels/floor.png" id="1_ivro8"]
+[ext_resource type="PackedScene" uid="uid://b3pso7neda21m" path="res://Scenes/Player/Player.tscn" id="2_u64e5"]
+[ext_resource type="PackedScene" uid="uid://i5op7mmhugbf" path="res://Scenes/Items/gun.tscn" id="3_jmvuj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yuk2h"]
+size = Vector2(513, 8)
+
+[node name="Pilot" type="Node2D"]
+script = ExtResource("1_02sd1")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(257, 638)
+
+[node name="FloorImage" type="Sprite2D" parent="Floor"]
+texture = ExtResource("1_ivro8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_yuk2h")
+
+[node name="Gun" parent="." instance=ExtResource("3_jmvuj")]
+position = Vector2(394, 626)
+
+[node name="Player" parent="." instance=ExtResource("2_u64e5")]
+position = Vector2(76, 551)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[connection signal="pickup" from="Gun" to="Player" method="_on_gun_pickup"]
+[connection signal="shoot_laser" from="Player" to="." method="_on_player_shoot_laser"]

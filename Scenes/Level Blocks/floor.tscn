@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bicsjp1xpyfgu"]
+
+[ext_resource type="Texture2D" uid="uid://cey70nq2qdeg6" path="res://Assets/Levels/floor.png" id="1_nj7sq"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ls7vd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yuk2h"]
+size = Vector2(513, 8)
+
+[node name="Floor" type="StaticBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_ls7vd")
+
+[node name="FloorImage" type="Sprite2D" parent="."]
+texture = ExtResource("1_nj7sq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_yuk2h")
