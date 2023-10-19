@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6ryxf6lw7y3y"
-path="res://.godot/imported/backpack.png-841f80c7ea2b45dbdfe0297f7e6a9a08.ctex"
+uid="uid://by24ps8r6ayb3"
+path="res://.godot/imported/door.png-a69e172fe444298551a384937ba87f34.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Items/backpack.png"
-dest_files=["res://.godot/imported/backpack.png-841f80c7ea2b45dbdfe0297f7e6a9a08.ctex"]
+source_file="res://Assets/Levels/door.png"
+dest_files=["res://.godot/imported/door.png-a69e172fe444298551a384937ba87f34.ctex"]
 
 [params]
 

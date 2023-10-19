@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgw5wuk7p1471"]
+
+[ext_resource type="Script" path="res://Scenes/Levels/level___1.gd" id="1_u042r"]
+[ext_resource type="PackedScene" uid="uid://i5op7mmhugbf" path="res://Scenes/Items/gun.tscn" id="5_jpthj"]
+[ext_resource type="PackedScene" uid="uid://wc2ajrptoebg" path="res://Scenes/Items/jetpack.tscn" id="6_mgl7s"]
+[ext_resource type="PackedScene" uid="uid://c1mu4ui18y2sd" path="res://Scenes/Level Blocks/door.tscn" id="6_pah4t"]
+
+[node name="Level - 1" type="Node2D"]
+script = ExtResource("1_u042r")
+
+[node name="Items" type="Node" parent="."]
+
+[node name="Gun" parent="Items" instance=ExtResource("5_jpthj")]
+position = Vector2(1490, -392)
+
+[node name="Jetpack" parent="Items" instance=ExtResource("6_mgl7s")]
+position = Vector2(479, 1019)
+
+[node name="Shoots" type="Node" parent="."]
+
+[node name="Hittable" type="Node" parent="."]
+
+[node name="Door" parent="Hittable" groups=["Hittable"] instance=ExtResource("6_pah4t")]
+position = Vector2(15, 907)
+
+[connection signal="pickup" from="Items/Gun" to="." method="_on_gun_pickup"]
+[connection signal="on_pickup" from="Items/Jetpack" to="." method="_on_jetpack_on_pickup"]

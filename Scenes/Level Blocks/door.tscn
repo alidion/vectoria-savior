@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1mu4ui18y2sd"]
+
+[ext_resource type="Script" path="res://Scenes/Level Blocks/door.gd" id="1_j23hd"]
+[ext_resource type="Texture2D" uid="uid://by24ps8r6ayb3" path="res://Assets/Levels/door.png" id="1_xmv0m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3vni2"]
+size = Vector2(16, 246)
+
+[node name="Door" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_j23hd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3vni2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xmv0m")

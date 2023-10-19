@@ -7,6 +7,7 @@
 size = Vector2(16, 16)
 
 [node name="Gun" type="Area2D"]
+collision_layer = 32
 script = ExtResource("1_6yng6")
 
 [node name="GunImage" type="Sprite2D" parent="."]

@@ -1,33 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://7ikf57ab7dol"]
+[gd_scene load_steps=5 format=3 uid="uid://dhrvrojudogrk"]
 
-[ext_resource type="Script" path="res://Scenes/Levels/GameController.gd" id="1_02sd1"]
-[ext_resource type="Texture2D" uid="uid://cey70nq2qdeg6" path="res://Assets/Levels/floor.png" id="1_ivro8"]
-[ext_resource type="PackedScene" uid="uid://b3pso7neda21m" path="res://Scenes/Player/Player.tscn" id="2_u64e5"]
+[ext_resource type="PackedScene" uid="uid://7ikf57ab7dol" path="res://Scenes/Levels/base_level.tscn" id="1_iuiw8"]
 [ext_resource type="PackedScene" uid="uid://i5op7mmhugbf" path="res://Scenes/Items/gun.tscn" id="3_jmvuj"]
+[ext_resource type="PackedScene" uid="uid://wc2ajrptoebg" path="res://Scenes/Items/jetpack.tscn" id="4_as6bu"]
+[ext_resource type="PackedScene" uid="uid://c1mu4ui18y2sd" path="res://Scenes/Level Blocks/door.tscn" id="5_gusd6"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yuk2h"]
-size = Vector2(513, 8)
+[node name="Pilot" instance=ExtResource("1_iuiw8")]
 
-[node name="Pilot" type="Node2D"]
-script = ExtResource("1_02sd1")
+[node name="Jetpack" parent="Items" index="0" instance=ExtResource("4_as6bu")]
+position = Vector2(230, 627)
 
-[node name="Floor" type="StaticBody2D" parent="."]
-position = Vector2(257, 638)
-
-[node name="FloorImage" type="Sprite2D" parent="Floor"]
-texture = ExtResource("1_ivro8")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2(-0.5, 0)
-shape = SubResource("RectangleShape2D_yuk2h")
-
-[node name="Gun" parent="." instance=ExtResource("3_jmvuj")]
+[node name="Gun" parent="Items" index="1" instance=ExtResource("3_jmvuj")]
 position = Vector2(394, 626)
 
-[node name="Player" parent="." instance=ExtResource("2_u64e5")]
-position = Vector2(76, 551)
+[node name="Door" parent="Hittable" index="0" groups=["Hittable"] instance=ExtResource("5_gusd6")]
+position = Vector2(506, 508)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-
-[connection signal="pickup" from="Gun" to="Player" method="_on_gun_pickup"]
-[connection signal="shoot_laser" from="Player" to="." method="_on_player_shoot_laser"]
+[node name="TileMap" parent="." index="4"]
+layer_0/tile_data = PackedInt32Array(262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0)

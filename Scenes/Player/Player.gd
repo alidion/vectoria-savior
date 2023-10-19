@@ -6,13 +6,15 @@ const JUMP_VELOCITY = -400.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-var can_shoot = false
+var have_gun = false
+var have_jetpack = false
+var facing_to: Vector2 = Vector2.RIGHT
 
 # Input signals
 signal shoot_laser(pos: Vector2)
 
 func _process(_delta):
-	if Input.is_action_just_pressed("FIRE"):
+	if Input.is_action_just_pressed("FIRE") and have_gun:
 		shoot_laser.emit(position) 
 
 func _physics_process(delta):
@@ -21,7 +23,7 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 
 	# Handle Jump.
-	if Input.is_action_pressed("JUMP"):
+	if Input.is_action_pressed("JUMP") and have_jetpack:
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
@@ -29,6 +31,10 @@ func _physics_process(delta):
 	var direction = Input.get_axis("LEFT", "RIGHT")
 	if direction:
 		velocity.x = direction * SPEED
+		if direction > 0:
+			facing_to = Vector2.RIGHT
+		elif direction < 0:
+			facing_to = Vector2.LEFT
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
@@ -37,5 +43,5 @@ func _physics_process(delta):
 
 func _on_gun_pickup(body):
 	if body.name == "Player":
-		$"..".remove_child($"../Gun")
-		can_shoot = true
+		$"..".remove_child($"Gun")
+		have_gun = true
