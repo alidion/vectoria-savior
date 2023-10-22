@@ -1,0 +1,33 @@
+[gd_scene load_steps=8 format=3 uid="uid://34xfjsm6sk7k"]
+
+[ext_resource type="PackedScene" uid="uid://7ikf57ab7dol" path="res://Scenes/Levels/base_level.tscn" id="1_83mu7"]
+[ext_resource type="Script" path="res://Scenes/Levels/Level_1.gd" id="2_27vj7"]
+[ext_resource type="PackedScene" uid="uid://dhrvrojudogrk" path="res://Scenes/Levels/pilot.tscn" id="3_5tpio"]
+[ext_resource type="PackedScene" uid="uid://wc2ajrptoebg" path="res://Scenes/Items/jetpack.tscn" id="3_nlv4y"]
+[ext_resource type="PackedScene" uid="uid://i5op7mmhugbf" path="res://Scenes/Items/gun.tscn" id="4_qau0w"]
+[ext_resource type="PackedScene" uid="uid://c1mu4ui18y2sd" path="res://Scenes/Level Blocks/door.tscn" id="5_a0tpj"]
+[ext_resource type="PackedScene" uid="uid://doytqd0isencd" path="res://Scenes/Level Blocks/level_end.tscn" id="7_vv26a"]
+
+[node name="Level 1" instance=ExtResource("1_83mu7")]
+script = ExtResource("2_27vj7")
+next_level = ExtResource("3_5tpio")
+
+[node name="Jetpack" parent="Items" index="0" instance=ExtResource("3_nlv4y")]
+position = Vector2(258, 1525)
+
+[node name="Gun" parent="Items" index="1" instance=ExtResource("4_qau0w")]
+position = Vector2(1245, -765)
+
+[node name="Door" parent="Hittable" index="0" instance=ExtResource("5_a0tpj")]
+position = Vector2(-102, 1347)
+scale = Vector2(1, 1.50188)
+
+[node name="TileMap" parent="." index="5"]
+layer_0/tile_data = PackedInt32Array(-131068, 131072, 1, 65540, 131072, 1, 327684, 131072, 0, 327683, 0, 2, 327682, 0, 2, 327681, 0, 2, 327680, 0, 2, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 131072, 2, 524295, 131072, 1, -327673, 131072, 1, 393215, 0, 2, 589822, 0, 0, 589823, 0, 0, 327679, 0, 1, 262143, 0, 1, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 131072, 2, 4, 131072, 1, 393220, 131072, 1, 458756, 131072, 1, -65532, 131072, 1, 589821, 0, 0, 589820, 0, 0, 589819, 0, 0, 655355, 0, 1, 720891, 0, 1, 786427, 65536, 2, 786428, 0, 0, 786429, 0, 0, 786430, 0, 0, 786431, 0, 0, 720896, 0, 0, 720897, 0, 0, 720899, 0, 0, 720900, 0, 0, 720901, 0, 0, 720902, 0, 0, 720903, 131072, 2, 655367, 131072, 1, 589831, 131072, 1, 458759, 131072, 1, 393223, 131072, 1, 327687, 131072, 1, 262151, 131072, 1, 196615, 131072, 1, 131079, 131072, 1, 65543, 131072, 1, 7, 131072, 1, -65529, 131072, 1, -131065, 131072, 1, -196601, 131072, 1, -262137, 131072, 1, -393209, 131072, 1, -393208, 0, 2, -393207, 0, 2, -393206, 0, 2, -393205, 0, 2, -458741, 131072, 1, -524277, 131072, 0, -524278, 0, 2, -524279, 0, 2, -524280, 0, 2, -524281, 0, 2, -524282, 0, 2, -524283, 0, 2, -524284, 131072, 1, -458748, 131072, 1, -393212, 131072, 1, -327676, 131072, 1, -262140, 131072, 1, -196604, 131072, 1, 720898, 0, 0)
+
+[node name="Level end" parent="." index="6" instance=ExtResource("7_vv26a")]
+position = Vector2(-520.75, 1531.62)
+
+[connection signal="on_pickup" from="Items/Jetpack" to="." method="_on_jetpack_on_pickup"]
+[connection signal="pickup" from="Items/Gun" to="." method="_on_gun_pickup"]
+[connection signal="body_entered" from="Level end" to="." method="_on_level_end_body_entered"]

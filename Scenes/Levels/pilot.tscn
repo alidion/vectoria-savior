@@ -16,5 +16,5 @@ position = Vector2(394, 626)
 [node name="Door" parent="Hittable" index="0" groups=["Hittable"] instance=ExtResource("5_gusd6")]
 position = Vector2(506, 508)
 
-[node name="TileMap" parent="." index="4"]
+[node name="TileMap" parent="." index="5"]
 layer_0/tile_data = PackedInt32Array(262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0)

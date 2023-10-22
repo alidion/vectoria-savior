@@ -11,12 +11,6 @@ func _on_player_shoot_laser(pos):
 	laser.hit.connect(_on_laser_hit)
 
 func _on_laser_hit(laser, body):
-	if body.is_in_group("Hittable"):
-		laser.queue_free()
+	laser.queue_free()
+	if body.has_method("hit"):
 		body.hit()
-
-func _on_gun_pickup(_body):
-	$Player.have_gun = true
-
-func _on_jetpack_on_pickup(_body):
-	$Player.have_jetpack = true
