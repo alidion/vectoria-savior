@@ -3,12 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://oc17bx3kbwps" path="res://Assets/Levels/level end.png" id="1_xwkd2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2n22e"]
-size = Vector2(128, 8)
+size = Vector2(128, 31)
 
 [node name="Level end" type="Area2D"]
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -11.5)
 shape = SubResource("RectangleShape2D_2n22e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
