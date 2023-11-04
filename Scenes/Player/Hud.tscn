@@ -1,0 +1,108 @@
+[gd_scene load_steps=8 format=3 uid="uid://mf0xyfy8s2fm"]
+
+[ext_resource type="Script" path="res://Scenes/Player/hud.gd" id="1_ysy8e"]
+[ext_resource type="Texture2D" uid="uid://cq68lqosdpg1o" path="res://Assets/Arrow.png" id="2_kbx5l"]
+[ext_resource type="Texture2D" uid="uid://bvg3ot40pobju" path="res://Assets/Hud/XBox Button A.png" id="3_l4eiq"]
+[ext_resource type="Texture2D" uid="uid://84apcw0x83c5" path="res://Assets/Hud/XBox Button X.png" id="4_h35ag"]
+[ext_resource type="Texture2D" uid="uid://dbibirjm35lqw" path="res://Assets/Hud/Progress Bar - Under.png" id="5_gxgnn"]
+[ext_resource type="Texture2D" uid="uid://cq4mxx1db45qt" path="res://Assets/Hud/Progress Bar - Over.png" id="6_rrogb"]
+[ext_resource type="Texture2D" uid="uid://cbfy12m04xt1s" path="res://Assets/Hud/Progress Bar - Progress.png" id="7_beg1s"]
+
+[node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_ysy8e")
+
+[node name="Actions" type="ColorRect" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -51.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Actions"]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.98
+anchor_right = 1.0
+anchor_bottom = 0.98
+offset_top = -44.02
+offset_bottom = -1.01998
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="Actions/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_bottom = 0
+
+[node name="Arrows Container" type="HBoxContainer" parent="Actions/HBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Left Arrow" type="TextureRect" parent="Actions/HBoxContainer/MarginContainer/Arrows Container"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("2_kbx5l")
+stretch_mode = 2
+
+[node name="Right Arrow" type="TextureRect" parent="Actions/HBoxContainer/MarginContainer/Arrows Container"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("2_kbx5l")
+stretch_mode = 2
+flip_h = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="Actions/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 0
+
+[node name="Buttons Container" type="HBoxContainer" parent="Actions/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_constants/separation = 20
+
+[node name="Jump Button" type="TextureRect" parent="Actions/HBoxContainer/MarginContainer2/Buttons Container"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("3_l4eiq")
+expand_mode = 2
+
+[node name="Fire Button" type="TextureRect" parent="Actions/HBoxContainer/MarginContainer2/Buttons Container"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("4_h35ag")
+expand_mode = 2
+
+[node name="Stats" type="ColorRect" parent="."]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.05
+grow_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Jetpack Energy" type="TextureProgressBar" parent="Stats"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.5
+offset_top = -15.0
+offset_right = 109.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 50.0
+allow_greater = true
+texture_under = ExtResource("5_gxgnn")
+texture_over = ExtResource("6_rrogb")
+texture_progress = ExtResource("7_beg1s")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://84apcw0x83c5"
-path="res://.godot/imported/XBox Button X.png-c42cfb9cbb7fe1ed1caf62252c44f7ea.ctex"
+uid="uid://dbibirjm35lqw"
+path="res://.godot/imported/Progress Bar - Under.png-46935d48eb956c7898538c6981f6faef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Hub/XBox Button X.png"
-dest_files=["res://.godot/imported/XBox Button X.png-c42cfb9cbb7fe1ed1caf62252c44f7ea.ctex"]
+source_file="res://Assets/Hud/Progress Bar - Under.png"
+dest_files=["res://.godot/imported/Progress Bar - Under.png-46935d48eb956c7898538c6981f6faef.ctex"]
 
 [params]
 

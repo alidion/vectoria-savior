@@ -12,7 +12,6 @@ func _on_change_level(level: PackedScene):
 	await $AnimationPlayer.animation_finished
 	remove_child(current_level)
 	load_level(level)
-	print("going to level")
 	$AnimationPlayer.play_backwards("fade_to_black")
 
 func load_level(level: PackedScene):

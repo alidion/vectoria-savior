@@ -7,10 +7,8 @@ signal level_completed(nextLevel: PackedScene)
 
 func _ready(): 
 	$Player.connect("on_laser_shoot", _on_player_shoot_laser)
-	_level_ready()
-
-func _level_ready():
-	pass
+	$Player.connect("on_jetpack_energy_changed", _on_player_jetpack_energy_changed)
+	$Player.jetpack_energy = 100
 
 func _on_player_shoot_laser(pos):
 	var laser = laserScn.instantiate()
@@ -23,3 +21,6 @@ func _on_laser_hit(laser, body):
 	laser.queue_free()
 	if body.has_method("hit"):
 		body.hit()
+
+func _on_player_jetpack_energy_changed(value):
+	$Hud.set_jetpack_energy_progress_bar(value)

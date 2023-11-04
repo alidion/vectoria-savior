@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://7ikf57ab7dol"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/base_level.gd" id="1_2xpce"]
-[ext_resource type="PackedScene" uid="uid://b4wlimwrbg7ap" path="res://Scenes/Player/hub.tscn" id="2_6qhky"]
+[ext_resource type="PackedScene" uid="uid://mf0xyfy8s2fm" path="res://Scenes/Player/Hud.tscn" id="2_17olq"]
 [ext_resource type="PackedScene" uid="uid://chw1pkfcmq736" path="res://Scenes/Level Blocks/level_type_a.tscn" id="3_d8rib"]
 [ext_resource type="PackedScene" uid="uid://b3pso7neda21m" path="res://Scenes/Player/Player.tscn" id="3_so2jj"]
 [ext_resource type="TileSet" uid="uid://c2tgit8hat1pt" path="res://Scenes/Level Blocks/new_tile_set.tres" id="4_241sq"]
@@ -9,7 +9,7 @@
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource("1_2xpce")
 
-[node name="Hub" parent="." instance=ExtResource("2_6qhky")]
+[node name="Hud" parent="." instance=ExtResource("2_17olq")]
 
 [node name="Player" parent="." instance=ExtResource("3_so2jj")]
 position = Vector2(76, 551)
@@ -25,5 +25,3 @@ position = Vector2(76, 551)
 [node name="TileMap" parent="." instance=ExtResource("3_d8rib")]
 tile_set = ExtResource("4_241sq")
 layer_0/tile_data = PackedInt32Array()
-
-[connection signal="shoot_laser" from="Player" to="." method="_on_player_shoot_laser"]

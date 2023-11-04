@@ -6,19 +6,19 @@ var color_white: Color = Color.WHITE
 @onready var input_map = [
 	{
 		"action": "LEFT",
-		"ui": $"ColorRect/HBoxContainer/MarginContainer/Arrows Container/Left Arrow"
+		"ui": %"Left Arrow"
 	},
 	{
 		"action": "RIGHT",
-		"ui": $"ColorRect/HBoxContainer/MarginContainer/Arrows Container/Right Arrow"
+		"ui": %"Right Arrow"
 	},
 	{
 		"action": "JUMP",
-		"ui": $"ColorRect/HBoxContainer/MarginContainer2/Buttons Container/Jump Button"
+		"ui": %"Jump Button"
 	},
 	{
 		"action": "FIRE",
-		"ui": $"ColorRect/HBoxContainer/MarginContainer2/Buttons Container/Fire Button"
+		"ui": %"Fire Button"
 	},
 ]
 
@@ -32,3 +32,6 @@ func color_pressed_key():
 			input_control["ui"].modulate = color_red
 		else:
 			input_control["ui"].modulate = color_white
+
+func set_jetpack_energy_progress_bar(value):
+	%"Jetpack Energy".value = value

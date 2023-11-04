@@ -6,6 +6,7 @@ func _ready():
 	super()
 	$Player.has_gun = false
 	$Player.has_jetpack = false
+	$Player.jetpack_energy = 0
 
 func _on_gun_pickup(_body):
 	$Player.has_gun = true
