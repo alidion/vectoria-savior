@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://7ikf57ab7dol" path="res://Scenes/Levels/base_level.tscn" id="1_83mu7"]
 [ext_resource type="Script" path="res://Scenes/Levels/Level_1.gd" id="2_27vj7"]
-[ext_resource type="PackedScene" uid="uid://dhrvrojudogrk" path="res://Scenes/Levels/pilot.tscn" id="3_5tpio"]
+[ext_resource type="PackedScene" uid="uid://bl7i88dkjgtbg" path="res://Scenes/Levels/level_2.tscn" id="3_hx4d6"]
 [ext_resource type="PackedScene" uid="uid://wc2ajrptoebg" path="res://Scenes/Items/jetpack.tscn" id="3_nlv4y"]
 [ext_resource type="PackedScene" uid="uid://i5op7mmhugbf" path="res://Scenes/Items/gun.tscn" id="4_qau0w"]
 [ext_resource type="PackedScene" uid="uid://c1mu4ui18y2sd" path="res://Scenes/Level Blocks/door.tscn" id="5_a0tpj"]
@@ -10,7 +10,7 @@
 
 [node name="Level 1" instance=ExtResource("1_83mu7")]
 script = ExtResource("2_27vj7")
-next_level = ExtResource("3_5tpio")
+next_level = ExtResource("3_hx4d6")
 
 [node name="Jetpack" parent="Items" index="0" instance=ExtResource("3_nlv4y")]
 position = Vector2(258, 1525)

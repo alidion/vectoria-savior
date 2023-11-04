@@ -8,17 +8,19 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @export var velocityFallingThreshold: int = 500
 
-var have_gun = false
-var have_jetpack = false
+@export var has_gun = true
+@export var has_jetpack = true
+
 var facing_to: Vector2 = Vector2.RIGHT
 var isFalling = false
 
 # Input signals
-signal shoot_laser(pos: Vector2)
+signal on_laser_shoot(pos: Vector2)
 
 func _process(_delta):
-	if Input.is_action_just_pressed("FIRE") and have_gun:
-		shoot_laser.emit(position) 
+	if Input.is_action_just_pressed("FIRE") and has_gun:
+		print("player shoots")
+		on_laser_shoot.emit(position) 
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -31,7 +33,7 @@ func _physics_process(delta):
 		die()
 
 	# Handle Jump.
-	if Input.is_action_pressed("JUMP") and have_jetpack:
+	if Input.is_action_pressed("JUMP") and has_jetpack:
 		velocity.y += JUMP_VELOCITY
 		isFalling = false
 
@@ -49,11 +51,6 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-
-func _on_gun_pickup(body):
-	if body.name == "Player":
-		$"..".remove_child($"Gun")
-		have_gun = true
 
 func die():
 	$AnimationPlayer.play("die")

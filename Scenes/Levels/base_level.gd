@@ -3,6 +3,15 @@ class_name BaseLevel
 
 const laserScn: PackedScene = preload("res://Scenes/Items/laser_shoot.tscn")
 
+signal level_completed(nextLevel: PackedScene)
+
+func _ready(): 
+	$Player.connect("on_laser_shoot", _on_player_shoot_laser)
+	_level_ready()
+
+func _level_ready():
+	pass
+
 func _on_player_shoot_laser(pos):
 	var laser = laserScn.instantiate()
 	laser.position = pos
