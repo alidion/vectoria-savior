@@ -18,4 +18,4 @@ func load_level(level: PackedScene):
 	current_level = level.instantiate()
 	add_child(current_level)
 	current_level.connect("level_completed", _on_change_level)
-	
+	 

@@ -1,20 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhrvrojudogrk"]
+[gd_scene load_steps=4 format=3 uid="uid://dhrvrojudogrk"]
 
 [ext_resource type="PackedScene" uid="uid://7ikf57ab7dol" path="res://Scenes/Levels/base_level.tscn" id="1_iuiw8"]
-[ext_resource type="PackedScene" uid="uid://i5op7mmhugbf" path="res://Scenes/Items/gun.tscn" id="3_jmvuj"]
-[ext_resource type="PackedScene" uid="uid://wc2ajrptoebg" path="res://Scenes/Items/jetpack.tscn" id="4_as6bu"]
-[ext_resource type="PackedScene" uid="uid://c1mu4ui18y2sd" path="res://Scenes/Level Blocks/door.tscn" id="5_gusd6"]
+[ext_resource type="PackedScene" uid="uid://dr5cvwddxnqot" path="res://Scenes/Level Blocks/door_with_switch.tscn" id="2_7l0fr"]
+[ext_resource type="PackedScene" uid="uid://cy1bxjob4h54e" path="res://Scenes/Level Blocks/switch.tscn" id="3_6tbeh"]
 
 [node name="Pilot" instance=ExtResource("1_iuiw8")]
 
-[node name="Jetpack" parent="Items" index="0" instance=ExtResource("4_as6bu")]
-position = Vector2(230, 627)
+[node name="Door with switch" parent="Actionables" index="0" instance=ExtResource("2_7l0fr")]
+position = Vector2(376, 511)
 
-[node name="Gun" parent="Items" index="1" instance=ExtResource("3_jmvuj")]
-position = Vector2(394, 626)
+[node name="switch" parent="Actionables/Door with switch" index="2" instance=ExtResource("3_6tbeh")]
+position = Vector2(-168, 10)
 
-[node name="Door" parent="Hittable" index="0" groups=["Hittable"] instance=ExtResource("5_gusd6")]
-position = Vector2(506, 508)
+[node name="switch2" parent="Actionables/Door with switch" index="3" instance=ExtResource("3_6tbeh")]
+position = Vector2(101, 0)
 
-[node name="TileMap" parent="." index="5"]
+[node name="Player" parent="." index="2"]
+z_index = 100
+
+[node name="TileMap" parent="." index="6"]
 layer_0/tile_data = PackedInt32Array(262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0)

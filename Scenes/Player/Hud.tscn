@@ -59,9 +59,22 @@ texture = ExtResource("2_kbx5l")
 stretch_mode = 2
 flip_h = true
 
-[node name="MarginContainer2" type="MarginContainer" parent="Actions/HBoxContainer"]
+[node name="MarginContainer3" type="MarginContainer" parent="Actions/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 7.0
+
+[node name="Dialogue" type="Label" parent="Actions/HBoxContainer/MarginContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Mmmm... This place is on fire!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Actions/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 0
 
@@ -107,51 +120,52 @@ theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 60
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Stats/HBoxContainer/MarginContainer"]
+[node name="HealthIconsContainer" type="HBoxContainer" parent="Stats/HBoxContainer/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/separation = 50
 
-[node name="LifeIcon" type="Control" parent="Stats/HBoxContainer/MarginContainer/HBoxContainer"]
+[node name="HealthIcon" type="Control" parent="Stats/HBoxContainer/MarginContainer/HealthIconsContainer"]
 layout_mode = 2
 
-[node name="Background" type="TextureRect" parent="Stats/HBoxContainer/MarginContainer/HBoxContainer/LifeIcon"]
+[node name="Background" type="TextureRect" parent="Stats/HBoxContainer/MarginContainer/HealthIconsContainer/HealthIcon"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("8_46501")
 
-[node name="TextureRect" type="TextureRect" parent="Stats/HBoxContainer/MarginContainer/HBoxContainer/LifeIcon"]
+[node name="TextureRect" type="TextureRect" parent="Stats/HBoxContainer/MarginContainer/HealthIconsContainer/HealthIcon"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("9_hvl77")
 
-[node name="LifeIcon2" type="Control" parent="Stats/HBoxContainer/MarginContainer/HBoxContainer"]
+[node name="HealthIcon 2" type="Control" parent="Stats/HBoxContainer/MarginContainer/HealthIconsContainer"]
 layout_mode = 2
 
-[node name="Background" type="TextureRect" parent="Stats/HBoxContainer/MarginContainer/HBoxContainer/LifeIcon2"]
+[node name="Background" type="TextureRect" parent="Stats/HBoxContainer/MarginContainer/HealthIconsContainer/HealthIcon 2"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("8_46501")
 
-[node name="TextureRect" type="TextureRect" parent="Stats/HBoxContainer/MarginContainer/HBoxContainer/LifeIcon2"]
+[node name="TextureRect" type="TextureRect" parent="Stats/HBoxContainer/MarginContainer/HealthIconsContainer/HealthIcon 2"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("9_hvl77")
 
-[node name="LifeIcon3" type="Control" parent="Stats/HBoxContainer/MarginContainer/HBoxContainer"]
+[node name="HealthIcon 3" type="Control" parent="Stats/HBoxContainer/MarginContainer/HealthIconsContainer"]
 layout_mode = 2
 
-[node name="Background" type="TextureRect" parent="Stats/HBoxContainer/MarginContainer/HBoxContainer/LifeIcon3"]
+[node name="Background" type="TextureRect" parent="Stats/HBoxContainer/MarginContainer/HealthIconsContainer/HealthIcon 3"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("8_46501")
 
-[node name="TextureRect" type="TextureRect" parent="Stats/HBoxContainer/MarginContainer/HBoxContainer/LifeIcon3"]
+[node name="TextureRect" type="TextureRect" parent="Stats/HBoxContainer/MarginContainer/HealthIconsContainer/HealthIcon 3"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -173,3 +187,10 @@ allow_greater = true
 texture_under = ExtResource("5_gxgnn")
 texture_over = ExtResource("6_rrogb")
 texture_progress = ExtResource("7_beg1s")
+
+[node name="HitIndicator" type="ColorRect" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 0, 0, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(32.04, 17.9695)

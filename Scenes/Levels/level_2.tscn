@@ -1,10 +1,34 @@
-[gd_scene load_steps=3 format=3 uid="uid://bl7i88dkjgtbg"]
+[gd_scene load_steps=7 format=3 uid="uid://bl7i88dkjgtbg"]
 
 [ext_resource type="PackedScene" uid="uid://7ikf57ab7dol" path="res://Scenes/Levels/base_level.tscn" id="1_m3mwq"]
 [ext_resource type="Script" path="res://Scenes/Levels/level_2.gd" id="2_tyfka"]
+[ext_resource type="PackedScene" uid="uid://dr5cvwddxnqot" path="res://Scenes/Level Blocks/door_with_switch.tscn" id="3_r6pry"]
+[ext_resource type="PackedScene" uid="uid://c2smba0jufu7q" path="res://Scenes/Level Blocks/burning_floor.tscn" id="5_gd1h3"]
+[ext_resource type="PackedScene" uid="uid://cy1bxjob4h54e" path="res://Scenes/Level Blocks/switch.tscn" id="5_kg4n6"]
+[ext_resource type="PackedScene" uid="uid://bsgxscw6jn37h" path="res://Scenes/Enemies/bug.tscn" id="6_1klbg"]
 
 [node name="Level 2" instance=ExtResource("1_m3mwq")]
 script = ExtResource("2_tyfka")
 
-[node name="TileMap" parent="." index="5"]
-layer_0/tile_data = PackedInt32Array(65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 327682, 131072, 2, 327681, 0, 0, 327680, 0, 0, 393215, 0, 0, 393214, 0, 0, 262146, 131072, 1, 196610, 131072, 1, 393213, 0, 0, 393212, 0, 0, 393211, 0, 0, 393210, 0, 0, 393209, 0, 0, 393208, 0, 0, 131064, 0, 0, 131065, 0, 0, 131066, 0, 0, 131067, 0, 0, 131068, 0, 0, 131069, 0, 0, 131070, 0, 0, 131071, 0, 0, 131074, 131072, 1, 393207, 0, 0, 393206, 0, 0, 393205, 0, 0, -327689, 131072, 0, -262153, 131072, 1, -196617, 131072, 1, -131081, 131072, 1, -65545, 131072, 1, -9, 131072, 1, 65527, 131072, 1, 131063, 131072, 1, -65548, 131072, 0, 393204, 131072, 1, 327668, 131072, 1, 262132, 131072, 1, 196596, 131072, 1, 131060, 131072, 1, 65524, 131072, 1, -12, 131072, 1, -327690, 0, 2, -327691, 0, 2, -327692, 0, 2, -327693, 0, 2, -327694, 0, 2, -327695, 0, 2, -327696, 0, 2, -327697, 0, 2, -327698, 0, 2, -327699, 0, 2, -327700, 0, 2, -65549, 0, 2, -65550, 0, 2, -65551, 0, 2, -65552, 0, 2, -65553, 0, 2, -65554, 0, 2, -65555, 0, 2, -65556, 0, 2, -65557, 0, 2, -65558, 0, 2, -65559, 0, 2, -327701, 0, 2, -327702, 0, 2, -327703, 0, 2)
+[node name="Door with switch" parent="Actionables" index="0" instance=ExtResource("3_r6pry")]
+position = Vector2(-1913, -493)
+scale = Vector2(1, 2)
+
+[node name="switch" parent="Actionables/Door with switch" index="2" instance=ExtResource("5_kg4n6")]
+position = Vector2(1283, -522.5)
+scale = Vector2(1, 0.5)
+
+[node name="Player" parent="." index="2"]
+z_index = 1000
+
+[node name="Burning floor" parent="." index="7" instance=ExtResource("5_gd1h3")]
+position = Vector2(-522, 762)
+
+[node name="TileMap" parent="." index="9"]
+layer_0/tile_data = PackedInt32Array(65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 327682, 131072, 2, 327681, 0, 0, 327680, 0, 0, 393215, 0, 0, 393214, 0, 0, 262146, 131072, 1, 196610, 131072, 1, 393213, 0, 0, 393212, 0, 0, 393211, 0, 0, 393210, 0, 0, 393209, 0, 0, 131065, 0, 0, 131066, 0, 0, 131067, 0, 0, 131068, 0, 0, 131069, 0, 0, 131070, 0, 0, 131071, 0, 0, 131074, 131072, 1, 393207, 0, 0, 393206, 0, 0, 393205, 0, 0, -65548, 131072, 0, 393204, 131072, 1, 327668, 131072, 1, 262132, 131072, 1, 196596, 131072, 1, 131060, 131072, 1, 65524, 131072, 1, -12, 131072, 1, -65549, 0, 2, -65550, 0, 2, -65551, 0, 2, -65552, 0, 2, -65553, 0, 2, -65554, 0, 2, -65555, 0, 2, -65556, 0, 2, -65557, 0, 2, -65558, 0, 2, -65559, 0, 2, 393208, 0, 0, 131064, 65536, 2, 65528, 0, 1, -8, 0, 1, -65544, 0, 1, -131080, 0, 1, -196616, 0, 1, -262152, 0, 1, -327688, 0, 1, -393224, 0, 1, -458760, 0, 1, -524296, 0, 1, -589832, 0, 1, -655368, 65536, 0, -655367, 0, 2, -655366, 0, 2, -655365, 0, 2, -393229, 0, 0, -393230, 0, 0, -393231, 0, 0, -393232, 0, 0, -393233, 0, 0, -393234, 0, 0, -393235, 0, 0, -393236, 0, 0, -393237, 0, 0, -393238, 0, 0, -393239, 0, 0, -393240, 0, 0, -458764, 0, 1, -524300, 0, 1, -589836, 0, 1, -655372, 0, 1, -720908, 0, 1, -786444, 0, 1, -851980, 65536, 0, -393228, 0, 1, -851979, 0, 2, -851978, 0, 2, -851977, 0, 2, -851976, 0, 2, -851975, 0, 2, -851974, 0, 2, -851973, 131072, 0, -786437, 131072, 1, -720901, 131072, 1)
+
+[node name="Bug" parent="." index="10" instance=ExtResource("6_1klbg")]
+position = Vector2(-190, 676)
+
+[editable path="Actionables/Door with switch/switch"]
+[editable path="Bug"]

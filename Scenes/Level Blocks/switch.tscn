@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy1bxjob4h54e"]
+
+[ext_resource type="Script" path="res://Scenes/Level Blocks/switch.gd" id="1_oasp6"]
+[ext_resource type="Texture2D" uid="uid://bq51h21qvvatc" path="res://Assets/Levels/switch.png" id="2_g3lbp"]
+
+[node name="switch" type="Node2D" groups=["Actionable"]]
+script = ExtResource("1_oasp6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_g3lbp")

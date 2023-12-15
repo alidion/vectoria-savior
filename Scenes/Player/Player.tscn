@@ -56,6 +56,7 @@ script = ExtResource("1_a40bv")
 velocityFallingThreshold = 2000
 
 [node name="Character" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 0, 1)
 texture = ExtResource("1_u1vek")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -66,3 +67,6 @@ shape = SubResource("RectangleShape2D_vj5cu")
 libraries = {
 "": SubResource("AnimationLibrary_rewv3")
 }
+
+[node name="JetpackCooldown" type="Timer" parent="."]
+wait_time = 2.0

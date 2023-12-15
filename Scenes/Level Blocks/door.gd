@@ -1,4 +1,5 @@
 extends StaticBody2D
+class_name VectoriaDoor
 
 @export var health: int = 3
  

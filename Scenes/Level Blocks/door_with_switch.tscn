@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dr5cvwddxnqot"]
+
+[ext_resource type="PackedScene" uid="uid://c1mu4ui18y2sd" path="res://Scenes/Level Blocks/door.tscn" id="1_tuea0"]
+[ext_resource type="Script" path="res://Scenes/Level Blocks/door_with_switch.gd" id="2_g6yk0"]
+
+[node name="Door with switch" instance=ExtResource("1_tuea0")]
+script = ExtResource("2_g6yk0")
+
+[node name="Sprite2D" parent="." index="1"]
+modulate = Color(0, 0.707512, 0.199474, 1)

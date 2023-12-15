@@ -11,6 +11,8 @@ script = ExtResource("1_2xpce")
 
 [node name="Hud" parent="." instance=ExtResource("2_17olq")]
 
+[node name="Actionables" type="Node" parent="."]
+
 [node name="Player" parent="." instance=ExtResource("3_so2jj")]
 position = Vector2(76, 551)
 
@@ -21,6 +23,10 @@ position = Vector2(76, 551)
 [node name="Items" type="Node" parent="."]
 
 [node name="Hittable" type="Node" parent="."]
+
+[node name="Burning Floors" type="Node" parent="."]
+
+[node name="Event Markers" type="Node" parent="."]
 
 [node name="TileMap" parent="." instance=ExtResource("3_d8rib")]
 tile_set = ExtResource("4_241sq")

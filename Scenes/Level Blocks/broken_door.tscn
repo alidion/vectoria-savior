@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7gym7vc1ru5h"]
+
+[ext_resource type="PackedScene" uid="uid://c1mu4ui18y2sd" path="res://Scenes/Level Blocks/door.tscn" id="1_mx32i"]
+[ext_resource type="Script" path="res://Scenes/Level Blocks/door.gd" id="2_2hghr"]
+
+[node name="Door" instance=ExtResource("1_mx32i")]
+script = ExtResource("2_2hghr")
