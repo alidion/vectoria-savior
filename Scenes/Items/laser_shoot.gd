@@ -9,5 +9,6 @@ func _process(delta):
 	position += direction * speed * delta
 
 func _on_body_entered(body):
+	print("hit")
 	hit.emit(self, body)
 	queue_free()

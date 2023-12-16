@@ -4,8 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://bwxjwm2h0q450" path="res://Assets/Character/character.png" id="2_0wpgn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_efqii"]
+size = Vector2(26, 26)
 
 [node name="Bug" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 5
 script = ExtResource("1_m2gyu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -16,10 +19,4 @@ modulate = Color(1, 0, 0, 1)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_0wpgn")
 
-[node name="Positions" type="Node" parent="."]
-
-[node name="Marker2D" type="Marker2D" parent="Positions"]
-position = Vector2(0, -60)
-
-[node name="Marker2D2" type="Marker2D" parent="Positions"]
-position = Vector2(0, 60)
+[node name="Positions" type="Node2D" parent="."]

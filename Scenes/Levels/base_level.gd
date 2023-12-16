@@ -28,6 +28,7 @@ func _on_player_shoot_laser(pos):
 	laser.hit.connect(_on_laser_hit)
 
 func _on_laser_hit(laser, body):
+	print("hit hit hit", body)
 	laser.queue_free()
 	if body.has_method("hit"):
 		body.hit()
