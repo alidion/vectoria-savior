@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://doytqd0isencd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2n22e"]
+size = Vector2(128, 31)
+
+[node name="EndLevelMarker" type="Area2D"]
+collision_layer = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -11.5)
+shape = SubResource("RectangleShape2D_2n22e")

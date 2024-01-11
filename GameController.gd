@@ -8,6 +8,7 @@ func _ready():
 	load_level(init_level)
 
 func _on_change_level(level: PackedScene):
+	print("Loading level: ")
 	$AnimationPlayer.play("fade_to_black")
 	await $AnimationPlayer.animation_finished
 	remove_child(current_level)

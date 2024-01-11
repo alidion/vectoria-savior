@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -50.0
+@export var WALKING_SPEED = 300.0
+@export var RUNNING_SPEED = 500.0
+@export var JETPACK_FORCE = -50.0
+@export var MAX_JETPACK_FORCE = 1000.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -34,6 +36,9 @@ func _ready():
 	$JetpackController.connect("on_energy_changed", _on_jetpack_energy_changed)
 
 func _process(_delta):
+	if not has_jetpack:
+		$JetpackController.energy = 0
+
 	if Input.is_action_just_pressed("FIRE") and has_gun:
 		on_laser_shoot.emit(position)
 	if Input.is_action_just_pressed("ACTION"):
@@ -56,11 +61,18 @@ func _physics_process(delta):
 		if $JetpackController.use(delta):
 			use_jetpack()
 	else:
-		$JetpackController.refill()
+		$JetpackController.refill(delta)
 
 	var direction = Input.get_axis("LEFT", "RIGHT")
+
+	var current_speed = WALKING_SPEED
+
+	if Input.is_action_pressed("RUN"):
+		current_speed = RUNNING_SPEED
+
+
 	if direction:
-		velocity.x = direction * SPEED
+		velocity.x = direction * current_speed
 		if direction > 0:
 			facing_to = Vector2.RIGHT
 			$Sprites.scale = Vector2(1, 1)
@@ -69,12 +81,13 @@ func _physics_process(delta):
 			$Sprites.scale = Vector2(-1, 1)
 
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, current_speed)
 
 	move_and_slide()
 
 func use_jetpack():
-	velocity.y = velocity.y + JUMP_VELOCITY
+	if abs(velocity.y) < MAX_JETPACK_FORCE:
+		velocity.y = velocity.y + JETPACK_FORCE
 
 
 func die():
@@ -92,5 +105,4 @@ func on_action():
 			actionable.on_action()
 
 func _on_jetpack_energy_changed(value):
-	print("energy changed")
 	on_player_jetpack_energy_changed.emit(value)

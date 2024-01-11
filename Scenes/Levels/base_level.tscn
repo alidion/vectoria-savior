@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://7ikf57ab7dol"]
+[gd_scene load_steps=8 format=3 uid="uid://7ikf57ab7dol"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/base_level.gd" id="1_2xpce"]
 [ext_resource type="PackedScene" uid="uid://mf0xyfy8s2fm" path="res://Scenes/Player/Hud.tscn" id="2_17olq"]
 [ext_resource type="PackedScene" uid="uid://b3pso7neda21m" path="res://Scenes/Player/Player.tscn" id="3_so2jj"]
 [ext_resource type="Texture2D" uid="uid://dxp6olgpc641b" path="res://Assets/Levels/Level - A - Tiled - 1.png" id="4_0w1mk"]
+[ext_resource type="PackedScene" uid="uid://doytqd0isencd" path="res://Scenes/Level Blocks/end_level_marker.tscn" id="5_embg3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tjjxa"]
 texture = ExtResource("4_0w1mk")
@@ -124,3 +125,5 @@ position_smoothing_enabled = true
 tile_set = SubResource("TileSet_tchpu")
 rendering_quadrant_size = 128
 format = 2
+
+[node name="EndLevelMarker" parent="." instance=ExtResource("5_embg3")]

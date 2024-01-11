@@ -4,10 +4,13 @@ class_name BaseLevel
 const laserScn: PackedScene = preload("res://Scenes/Items/laser_shoot.tscn")
 
 var player_is_on_burning_floor = false
+@export var next_level: PackedScene
+
 
 signal level_completed(nextLevel: PackedScene)
 
 func _ready():
+	$EndLevelMarker.connect("body_entered", _on_level_end_body_entered)
 	setup_burning_floor()
 	setup_player()
 	$Hud.set_dialogue("")
@@ -46,3 +49,6 @@ func setup_burning_floor():
 
 func _on_hit_by_burning():
 	$Player.health -= 1
+
+func _on_level_end_body_entered(_body:Node2D):
+	level_completed.emit(next_level)
