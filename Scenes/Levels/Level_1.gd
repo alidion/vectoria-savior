@@ -6,11 +6,10 @@ func _ready():
 	super()
 	$Player.has_gun = false
 	$Player.has_jetpack = false
-	$Player.jetpack_energy = 0
 
 func _on_gun_pickup(_body):
 	$Player.has_gun = true
-	$Items.remove_child($Items/Gun)
+	$Items.call_deferred("remove_child", $Items/Gun)
 
 
 func _on_jetpack_on_pickup(_body):

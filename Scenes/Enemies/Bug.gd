@@ -15,16 +15,12 @@ func _ready():
 	update_configuration_warnings()
 	var markers = $Positions.get_children()
 	for marker in markers:
-		print("Marker position: ", marker.global_position)
 		positions.append(marker.global_position)	
 
 func _physics_process(_delta):\
 	if not Engine.is_editor_hint():
 		if positions.size() > 0:
 			var current_next_position = positions[next_position_index]
-
-			if Input.is_action_just_pressed("DEBUG"):
-				print("Next Position: ", current_next_position)
 
 			if position.distance_to(current_next_position) < 2:
 				next_position_index = (next_position_index + 1) % positions.size()

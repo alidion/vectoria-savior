@@ -28,6 +28,10 @@ window/size/viewport_height=720
 
 project/assembly_name="Vectoria"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 UP={

@@ -14,10 +14,9 @@ func _ready():
 	
 func setup_player():
 	$Player.connect("on_laser_shoot", _on_player_shoot_laser)
-	$Player.connect("on_jetpack_energy_changed", _on_player_jetpack_energy_changed)
+	$Player.connect("on_player_jetpack_energy_changed", _on_player_jetpack_energy_changed)
 	$Player.connect("on_health_changed", _on_player_health_changed)
 	$Player.connect("on_health_decreased", _on_player_health_decreased)
-	$Player.jetpack_energy = 100
 	$Player.health = 3
 
 func _on_player_shoot_laser(pos):
@@ -28,7 +27,6 @@ func _on_player_shoot_laser(pos):
 	laser.hit.connect(_on_laser_hit)
 
 func _on_laser_hit(laser, body):
-	print("hit hit hit", body)
 	laser.queue_free()
 	if body.has_method("hit"):
 		body.hit()
