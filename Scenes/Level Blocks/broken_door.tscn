@@ -5,3 +5,9 @@
 
 [node name="Door" instance=ExtResource("1_mx32i")]
 script = ExtResource("2_2hghr")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" parent="." index="1"]
+modulate = Color(0.820104, 0.358093, 0.263637, 1)

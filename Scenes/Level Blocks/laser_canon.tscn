@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://rpdbjwhsojq5"]
+
+[ext_resource type="Texture2D" uid="uid://cdly8cco7p8fu" path="res://Assets/Levels/Laser Canon.png" id="1_5c371"]
+[ext_resource type="Script" uid="uid://dqs5mio4fmfr4" path="res://Scenes/Level Blocks/laser_canon.gd" id="1_w6bl8"]
+
+[node name="Laser canon" type="StaticBody2D" groups=["laser_cannon"]]
+collision_layer = 64
+script = ExtResource("1_w6bl8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5c371")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-47, -64, -47, 4, -7, 4, -7, 64, 12, 64, 12, 4, 48, 4, 48, -64)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(2, 64)
+
+[node name="LaserBlockedTimer" type="Timer" parent="."]

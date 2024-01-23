@@ -12,6 +12,7 @@ signal level_completed(nextLevel: PackedScene)
 func _ready():
 	$EndLevelMarker.connect("body_entered", _on_level_end_body_entered)
 	setup_burning_floor()
+	setup_laser_cannons()
 	setup_player()
 	$Hud.set_dialogue("")
 	
@@ -47,8 +48,17 @@ func setup_burning_floor():
 	for burning_floor in get_tree().get_nodes_in_group("burning_floor"):
 		burning_floor.connect("hit_by_burning", _on_hit_by_burning)
 
+func setup_laser_cannons():
+	for laser_cannon in get_tree().get_nodes_in_group("laser_cannon"):
+		print("laser_cannon")
+		laser_cannon.connect("laser_hit", _on_cannon_laser_hit)
+
 func _on_hit_by_burning():
 	$Player.health -= 1
 
 func _on_level_end_body_entered(_body:Node2D):
 	level_completed.emit(next_level)
+
+func _on_cannon_laser_hit(body):
+	if body.name == "Player":
+		$Player.health -= 1

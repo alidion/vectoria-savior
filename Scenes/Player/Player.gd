@@ -11,13 +11,14 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var velocityFallingThreshold: int = 500
 @export var has_gun = true
 @export var has_jetpack = true
+@export var facing_to: Vector2 = Vector2.RIGHT
+
 
 signal on_laser_shoot(pos: Vector2)
 signal on_player_jetpack_energy_changed(value: int)
 signal on_health_changed(health: int)
 signal on_health_decreased()
 
-var facing_to: Vector2 = Vector2.RIGHT
 var isFalling = false
 var is_dead = false
 
@@ -75,13 +76,18 @@ func _physics_process(delta):
 		velocity.x = direction * current_speed
 		if direction > 0:
 			facing_to = Vector2.RIGHT
-			$Sprites.scale = Vector2(1, 1)
 		elif direction < 0:
 			facing_to = Vector2.LEFT
-			$Sprites.scale = Vector2(-1, 1)
 
 	else:
 		velocity.x = move_toward(velocity.x, 0, current_speed)
+
+	if facing_to == Vector2.RIGHT:
+		$Sprites.scale = Vector2(1, 1)
+	
+	if facing_to == Vector2.LEFT:
+		$Sprites.scale = Vector2(-1, 1)
+
 
 	move_and_slide()
 
