@@ -14,7 +14,7 @@ script = ExtResource("2_tyfka")
 
 [node name="Player" parent="." index="2"]
 z_index = 1000
-position = Vector2(-4958, 1083)
+position = Vector2(1204, -4203)
 facing_to = Vector2(-1, 0)
 
 [node name="Camera2D" parent="Player" index="4"]
@@ -158,6 +158,13 @@ position = Vector2(-92, -62)
 
 [node name="Laser canon" parent="." index="14" instance=ExtResource("8_87k8v")]
 position = Vector2(-4566, 577)
+
+[node name="Laser canon2" parent="." index="15" instance=ExtResource("8_87k8v")]
+position = Vector2(-765, -4673)
+
+[node name="Laser canon3" parent="." index="16" instance=ExtResource("8_87k8v")]
+position = Vector2(1728, -3706)
+rotation = -1.5708
 
 [editable path="Bug"]
 [editable path="Bug2"]
