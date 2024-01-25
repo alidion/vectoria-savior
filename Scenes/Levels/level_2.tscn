@@ -18,6 +18,7 @@ position = Vector2(1204, -4203)
 facing_to = Vector2(-1, 0)
 
 [node name="Camera2D" parent="Player" index="4"]
+position = Vector2(-3791, -71)
 zoom = Vector2(0.5, 0.5)
 
 [node name="Door" parent="Hittable" index="0" instance=ExtResource("3_1ur2n")]
@@ -57,6 +58,7 @@ position = Vector2(-384, 51)
 [node name="Bug" parent="." index="11" instance=ExtResource("7_2ypjq")]
 position = Vector2(-3179, -2444)
 scale = Vector2(1, 1)
+SPEED = null
 
 [node name="Marker2D" type="Marker2D" parent="Bug/Positions" index="0"]
 position = Vector2(-307, 133)
@@ -91,6 +93,7 @@ position = Vector2(-92, -62)
 [node name="Bug2" parent="." index="12" instance=ExtResource("7_2ypjq")]
 position = Vector2(-3179, 826)
 scale = Vector2(1, 1)
+SPEED = null
 
 [node name="Marker2D" type="Marker2D" parent="Bug2/Positions" index="0"]
 position = Vector2(-307, 133)
@@ -127,34 +130,18 @@ position = Vector2(-3179, -4513)
 scale = Vector2(1, 1)
 
 [node name="Marker2D" type="Marker2D" parent="Bug3/Positions" index="0"]
-position = Vector2(-307, 133)
 
 [node name="Marker2D2" type="Marker2D" parent="Bug3/Positions" index="1"]
-position = Vector2(-519, -56)
+position = Vector2(206, 197)
 
 [node name="Marker2D3" type="Marker2D" parent="Bug3/Positions" index="2"]
-position = Vector2(-303, 135)
+position = Vector2(395, -21)
 
 [node name="Marker2D4" type="Marker2D" parent="Bug3/Positions" index="3"]
-position = Vector2(-95, -66)
+position = Vector2(579, 187)
 
 [node name="Marker2D5" type="Marker2D" parent="Bug3/Positions" index="4"]
-position = Vector2(94, 142)
-
-[node name="Marker2D6" type="Marker2D" parent="Bug3/Positions" index="5"]
-position = Vector2(276, -47)
-
-[node name="Marker2D7" type="Marker2D" parent="Bug3/Positions" index="6"]
-position = Vector2(422, 137)
-
-[node name="Marker2D8" type="Marker2D" parent="Bug3/Positions" index="7"]
-position = Vector2(276, -45)
-
-[node name="Marker2D9" type="Marker2D" parent="Bug3/Positions" index="8"]
-position = Vector2(94, 141)
-
-[node name="Marker2D10" type="Marker2D" parent="Bug3/Positions" index="9"]
-position = Vector2(-92, -62)
+position = Vector2(759, -29)
 
 [node name="Laser canon" parent="." index="14" instance=ExtResource("8_87k8v")]
 position = Vector2(-4566, 577)

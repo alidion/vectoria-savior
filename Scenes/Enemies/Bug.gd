@@ -1,7 +1,7 @@
 @tool
 extends CharacterBody2D
 
-const SPEED = 200.0
+@export var SPEED = 500.0
 
 @export var health = 3
 
@@ -17,7 +17,7 @@ func _ready():
 	for marker in markers:
 		positions.append(marker.global_position)	
 
-func _physics_process(_delta):\
+func _physics_process(_delta):
 	if not Engine.is_editor_hint():
 		if positions.size() > 0:
 			var current_next_position = positions[next_position_index]
