@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bl7i88dkjgtbg"]
+[gd_scene load_steps=10 format=3 uid="uid://bl7i88dkjgtbg"]
 
 [ext_resource type="PackedScene" uid="uid://7ikf57ab7dol" path="res://Scenes/Levels/base_level.tscn" id="1_m3mwq"]
 [ext_resource type="Script" path="res://Scenes/Levels/level_2.gd" id="2_tyfka"]
@@ -8,17 +8,18 @@
 [ext_resource type="PackedScene" uid="uid://cy1bxjob4h54e" path="res://Scenes/Level Blocks/switch.tscn" id="5_naulx"]
 [ext_resource type="PackedScene" uid="uid://bsgxscw6jn37h" path="res://Scenes/Enemies/bug.tscn" id="7_2ypjq"]
 [ext_resource type="PackedScene" uid="uid://rpdbjwhsojq5" path="res://Scenes/Level Blocks/laser_canon.tscn" id="8_87k8v"]
+[ext_resource type="PackedScene" uid="uid://6er7270vh5gt" path="res://Scenes/Enemies/Human.tscn" id="9_bhl17"]
 
 [node name="Level 2" instance=ExtResource("1_m3mwq")]
 script = ExtResource("2_tyfka")
 
 [node name="Player" parent="." index="2"]
 z_index = 1000
-position = Vector2(1204, -4203)
+position = Vector2(-89, -460)
 facing_to = Vector2(-1, 0)
 
 [node name="Camera2D" parent="Player" index="4"]
-position = Vector2(-3791, -71)
+position = Vector2(-18, 18)
 zoom = Vector2(0.5, 0.5)
 
 [node name="Door" parent="Hittable" index="0" instance=ExtResource("3_1ur2n")]
@@ -152,6 +153,9 @@ position = Vector2(-765, -4673)
 [node name="Laser canon3" parent="." index="16" instance=ExtResource("8_87k8v")]
 position = Vector2(1728, -3706)
 rotation = -1.5708
+
+[node name="CharacterBody2D" parent="." index="17" instance=ExtResource("9_bhl17")]
+position = Vector2(3459, -1855)
 
 [editable path="Bug"]
 [editable path="Bug2"]

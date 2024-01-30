@@ -1,7 +1,8 @@
+@uid("uid://dq2fifpwnpocv") # Generated automatically, do not modify.
 @tool
 extends CharacterBody2D
 
-@export var SPEED = 500.0
+var SPEED = 500.0
 
 @export var health = 3
 
@@ -26,7 +27,7 @@ func _physics_process(_delta):
 				next_position_index = (next_position_index + 1) % positions.size()
 
 			var direction = (current_next_position - global_position).normalized()
-			velocity = direction * SPEED
+			velocity = direction * 500
 
 		move_and_slide()
 

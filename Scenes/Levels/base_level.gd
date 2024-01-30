@@ -32,8 +32,9 @@ func _on_player_shoot_laser(pos):
 
 func _on_laser_hit(laser, body):
 	laser.queue_free()
-	if body.has_method("hit"):
-		body.hit()
+	
+	if body is HitBoxComponent:
+		body.damage(1)
 
 func _on_player_jetpack_energy_changed(value):
 	$Hud.set_jetpack_energy_progress_bar(value)

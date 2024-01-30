@@ -1,3 +1,4 @@
+@uid("uid://duwd0haecxokp") # Generated automatically, do not modify.
 extends CharacterBody2D
 
 @export var WALKING_SPEED = 300.0
@@ -87,7 +88,6 @@ func _physics_process(delta):
 	
 	if facing_to == Vector2.LEFT:
 		$Sprites.scale = Vector2(-1, 1)
-
 
 	move_and_slide()
 

@@ -1,13 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7gym7vc1ru5h"]
+[gd_scene load_steps=5 format=3 uid="uid://b7gym7vc1ru5h"]
 
-[ext_resource type="PackedScene" uid="uid://c1mu4ui18y2sd" path="res://Scenes/Level Blocks/door.tscn" id="1_mx32i"]
-[ext_resource type="Script" path="res://Scenes/Level Blocks/door.gd" id="2_2hghr"]
+[ext_resource type="PackedScene" path="res://Scenes/Level Blocks/door.tscn" id="1_mx32i"]
+[ext_resource type="PackedScene" uid="uid://mobtq3g6bm0h" path="res://Components/Characters/hit_box_component.tscn" id="3_1k4id"]
+[ext_resource type="PackedScene" uid="uid://bqtxltswsnh62" path="res://Components/Characters/health_component.tscn" id="4_u0jmv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ntyu4"]
+size = Vector2(20, 506)
 
 [node name="Door" instance=ExtResource("1_mx32i")]
-script = ExtResource("2_2hghr")
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(0, 1)
 
 [node name="Sprite2D" parent="." index="1"]
 modulate = Color(0.820104, 0.358093, 0.263637, 1)
+
+[node name="HitBoxComponent" parent="." index="2" node_paths=PackedStringArray("health_component") instance=ExtResource("3_1k4id")]
+collision_layer = 2
+collision_mask = 13
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent" index="0"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_ntyu4")
+
+[node name="HealthComponent" parent="." index="3" instance=ExtResource("4_u0jmv")]
+position = Vector2(-20, -9)
