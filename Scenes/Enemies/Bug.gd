@@ -31,11 +31,6 @@ func _physics_process(_delta):
 
 		move_and_slide()
 
-func hit():
-	health -= 1
-	if health <= 0:
-		queue_free()
-
 func _get_configuration_warnings():
 	var markers = $Positions.get_children()
 	if markers.size() == 0:
