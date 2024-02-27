@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://yq0n0ysefafr"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/GunComponent.gd" id="1_6kw70"]
+[ext_resource type="PackedScene" uid="uid://67r445ak6dto" path="res://Scenes/Items/enemy_laser_shoot.tscn" id="2_d4eiy"]
+
+[node name="GunComponent" type="Node2D"]
+script = ExtResource("1_6kw70")
+laserScn = ExtResource("2_d4eiy")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(54, 0)
+
+[node name="GunCoolDown" type="Timer" parent="."]

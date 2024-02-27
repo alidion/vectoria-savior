@@ -1,4 +1,3 @@
-@uid("uid://xmgc46b4kcja") # Generated automatically, do not modify.
 extends Area2D
 
 signal on_body_entered

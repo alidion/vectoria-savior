@@ -15,15 +15,15 @@ script = ExtResource("2_tyfka")
 
 [node name="Player" parent="." index="2"]
 z_index = 1000
-position = Vector2(-89, -460)
+position = Vector2(6, 497)
 facing_to = Vector2(-1, 0)
 
-[node name="Camera2D" parent="Player" index="4"]
+[node name="Camera2D" parent="Player" index="7"]
 position = Vector2(-18, 18)
 zoom = Vector2(0.5, 0.5)
 
 [node name="Door" parent="Hittable" index="0" instance=ExtResource("3_1ur2n")]
-position = Vector2(388, -641)
+position = Vector2(420, -641)
 
 [node name="Door2" parent="Hittable" index="1" instance=ExtResource("3_1ur2n")]
 position = Vector2(-3829, -2431)
@@ -54,12 +54,14 @@ position = Vector2(4739, -1794)
 position = Vector2(4157, -2045)
 
 [node name="switch" parent="Door with switch" index="2" instance=ExtResource("5_naulx")]
-position = Vector2(-384, 51)
+position = Vector2(-382, 136)
 
 [node name="Bug" parent="." index="11" instance=ExtResource("7_2ypjq")]
 position = Vector2(-3179, -2444)
 scale = Vector2(1, 1)
-SPEED = null
+
+[node name="HitBoxComponent" parent="Bug" index="1" node_paths=PackedStringArray("health_component")]
+health_component = NodePath("../HealthComponent")
 
 [node name="Marker2D" type="Marker2D" parent="Bug/Positions" index="0"]
 position = Vector2(-307, 133)
@@ -94,7 +96,9 @@ position = Vector2(-92, -62)
 [node name="Bug2" parent="." index="12" instance=ExtResource("7_2ypjq")]
 position = Vector2(-3179, 826)
 scale = Vector2(1, 1)
-SPEED = null
+
+[node name="HitBoxComponent" parent="Bug2" index="1" node_paths=PackedStringArray("health_component")]
+health_component = NodePath("../HealthComponent")
 
 [node name="Marker2D" type="Marker2D" parent="Bug2/Positions" index="0"]
 position = Vector2(-307, 133)
@@ -130,6 +134,9 @@ position = Vector2(-92, -62)
 position = Vector2(-3179, -4513)
 scale = Vector2(1, 1)
 
+[node name="HitBoxComponent" parent="Bug3" index="1" node_paths=PackedStringArray("health_component")]
+health_component = NodePath("../HealthComponent")
+
 [node name="Marker2D" type="Marker2D" parent="Bug3/Positions" index="0"]
 
 [node name="Marker2D2" type="Marker2D" parent="Bug3/Positions" index="1"]
@@ -154,7 +161,7 @@ position = Vector2(-765, -4673)
 position = Vector2(1728, -3706)
 rotation = -1.5708
 
-[node name="CharacterBody2D" parent="." index="17" instance=ExtResource("9_bhl17")]
+[node name="HumanEnemy" parent="." index="17" instance=ExtResource("9_bhl17")]
 position = Vector2(3459, -1855)
 
 [editable path="Bug"]

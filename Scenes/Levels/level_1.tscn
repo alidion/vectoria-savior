@@ -31,6 +31,7 @@ position = Vector2(240, 42)
 [node name="Player" parent="." index="2"]
 z_index = 1000
 z_as_relative = false
+mask = 0
 
 [node name="Jetpack" parent="Items" index="0" instance=ExtResource("3_nlv4y")]
 position = Vector2(2653, 2939)
@@ -51,6 +52,9 @@ layer_1/tile_data = PackedInt32Array(196607, 196609, 1, 262143, 196609, 1, 32767
 [node name="Bug" parent="." index="9" instance=ExtResource("10_20fby")]
 position = Vector2(3545, 1701)
 scale = Vector2(0.5, 0.5)
+
+[node name="HitBoxComponent" parent="Bug" index="1" node_paths=PackedStringArray("health_component")]
+health_component = NodePath("../HealthComponent")
 
 [node name="Marker2D" type="Marker2D" parent="Bug/Positions" index="0"]
 

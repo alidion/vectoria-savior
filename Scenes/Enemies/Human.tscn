@@ -1,8 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://6er7270vh5gt"]
+[gd_scene load_steps=14 format=3 uid="uid://6er7270vh5gt"]
 
 [ext_resource type="Texture2D" uid="uid://bwxjwm2h0q450" path="res://Assets/Character/character.png" id="1_ujl28"]
 [ext_resource type="PackedScene" uid="uid://bqtxltswsnh62" path="res://Components/Characters/health_component.tscn" id="2_hnxg0"]
+[ext_resource type="Texture2D" uid="uid://bc38s50ty05si" path="res://Assets/Character/gun.png" id="2_tina0"]
 [ext_resource type="PackedScene" uid="uid://mobtq3g6bm0h" path="res://Components/Characters/hit_box_component.tscn" id="3_g7r3y"]
+[ext_resource type="PackedScene" uid="uid://yq0n0ysefafr" path="res://Components/Characters/gun_component.tscn" id="5_h085r"]
+[ext_resource type="PackedScene" uid="uid://chy488gwxurty" path="res://Components/Controllers/state_machine_component.tscn" id="5_yc2kq"]
+[ext_resource type="PackedScene" uid="uid://dwfxnts3cnbnt" path="res://Scenes/Enemies/Human/States/HumanIdle.tscn" id="6_ma568"]
+[ext_resource type="PackedScene" uid="uid://gtnx4ckebogt" path="res://Scenes/Enemies/Human/States/HumanAttackPlayerr.tscn" id="7_3psia"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Human/States/HumanIdle.gd" id="7_fp6p6"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Human/States/Jump.gd" id="11_1m324"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1g0xj"]
 size = Vector2(48, 128)
@@ -10,16 +17,25 @@ size = Vector2(48, 128)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rkrxe"]
 size = Vector2(48, 128)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l84iw"]
+size = Vector2(1871, 350)
+
 [node name="HumanEnemy" type="CharacterBody2D"]
 collision_layer = 8
 collision_mask = 63
 
+[node name="Shoots" type="Node2D" parent="."]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1g0xj")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="HumanSprite" type="Sprite2D" parent="."]
 modulate = Color(0.69613, 0.0901679, 0.396045, 1)
 texture = ExtResource("1_ujl28")
+
+[node name="GunSprite" type="Sprite2D" parent="."]
+position = Vector2(26, 0)
+texture = ExtResource("2_tina0")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_hnxg0")]
 
@@ -31,3 +47,33 @@ health_component = NodePath("../HealthComponent")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
 shape = SubResource("RectangleShape2D_rkrxe")
 debug_color = Color(0.967768, 3.85046e-07, 0.472158, 0.42)
+
+[node name="GunComponent" parent="." instance=ExtResource("5_h085r")]
+
+[node name="PlayerDetectArea" type="Area2D" parent="."]
+collision_layer = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectArea"]
+position = Vector2(0.5, -111)
+shape = SubResource("RectangleShape2D_l84iw")
+
+[node name="CenterRayCast" type="RayCast2D" parent="."]
+target_position = Vector2(933, 0)
+
+[node name="StateMachineComponent" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("5_yc2kq")]
+initial_state = NodePath("Idle")
+
+[node name="Idle" parent="StateMachineComponent" node_paths=PackedStringArray("Human", "PlayerDetectArea") instance=ExtResource("6_ma568")]
+script = ExtResource("7_fp6p6")
+Human = NodePath("../..")
+PlayerDetectArea = NodePath("../../PlayerDetectArea")
+
+[node name="AttackPlayer" parent="StateMachineComponent" node_paths=PackedStringArray("Human", "PlayerDetectArea", "CenterRaycast", "Gun") instance=ExtResource("7_3psia")]
+Human = NodePath("../..")
+PlayerDetectArea = NodePath("../../PlayerDetectArea")
+CenterRaycast = NodePath("../../CenterRayCast")
+Gun = NodePath("../../GunComponent")
+
+[node name="Jump" type="Node" parent="StateMachineComponent" node_paths=PackedStringArray("Human")]
+script = ExtResource("11_1m324")
+Human = NodePath("../..")

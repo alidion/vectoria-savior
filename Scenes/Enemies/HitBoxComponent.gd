@@ -1,4 +1,3 @@
-@uid("uid://bstd7twj1eg5s") # Generated automatically, do not modify.
 extends Area2D
 
 class_name HitBoxComponent

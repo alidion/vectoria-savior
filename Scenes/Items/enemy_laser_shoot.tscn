@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://67r445ak6dto"]
+
+[ext_resource type="Script" path="res://Scenes/Items/laser_shoot.gd" id="1_bev0v"]
+[ext_resource type="Texture2D" uid="uid://b0wbkb70mgmjm" path="res://Assets/Items/lasershoot.png" id="2_plsvf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v7rhp"]
+size = Vector2(128, 19)
+
+[node name="EnemyLaserShoot" type="Area2D"]
+collision_layer = 4
+collision_mask = 19
+script = ExtResource("1_bev0v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_plsvf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_v7rhp")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

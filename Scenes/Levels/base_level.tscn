@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Levels/base_level.gd" id="1_2xpce"]
 [ext_resource type="PackedScene" uid="uid://mf0xyfy8s2fm" path="res://Scenes/Player/Hud.tscn" id="2_17olq"]
-[ext_resource type="PackedScene" uid="uid://b3pso7neda21m" path="res://Scenes/Player/Player.tscn" id="3_so2jj"]
+[ext_resource type="PackedScene" uid="uid://b3pso7neda21m" path="res://Player.tscn" id="3_so2jj"]
 [ext_resource type="Texture2D" uid="uid://dxp6olgpc641b" path="res://Assets/Levels/Level - A - Tiled - 1.png" id="4_0w1mk"]
 [ext_resource type="PackedScene" uid="uid://doytqd0isencd" path="res://Scenes/Level Blocks/end_level_marker.tscn" id="5_embg3"]
 
@@ -103,7 +103,7 @@ script = ExtResource("1_2xpce")
 
 [node name="Actionables" type="Node" parent="."]
 
-[node name="Player" parent="." instance=ExtResource("3_so2jj")]
+[node name="Player" parent="." groups=["player"] instance=ExtResource("3_so2jj")]
 position = Vector2(76, 551)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -111,7 +111,7 @@ process_callback = 0
 limit_smoothed = true
 position_smoothing_enabled = true
 
-[node name="Shoots" type="Node" parent="."]
+[node name="Shoots" type="Node" parent="." groups=["shoots"]]
 
 [node name="Items" type="Node" parent="."]
 

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://gtnx4ckebogt"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/Human/States/AttackPlayer.gd" id="1_evci4"]
+
+[node name="AttackPlayer" type="Node"]
+script = ExtResource("1_evci4")

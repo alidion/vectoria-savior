@@ -1,8 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3pso7neda21m"]
+[gd_scene load_steps=14 format=3 uid="uid://b3pso7neda21m"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1_a40bv"]
 [ext_resource type="Texture2D" uid="uid://bwxjwm2h0q450" path="res://Assets/Character/character.png" id="1_u1vek"]
+[ext_resource type="PackedScene" uid="uid://mobtq3g6bm0h" path="res://Components/Characters/hit_box_component.tscn" id="2_efkpg"]
+[ext_resource type="PackedScene" uid="uid://bqtxltswsnh62" path="res://Components/Characters/health_component.tscn" id="3_bgutw"]
 [ext_resource type="Texture2D" uid="uid://d340s3ao7f6i6" path="res://Assets/Character/jetpack.png" id="3_g1tpr"]
+[ext_resource type="PackedScene" uid="uid://yq0n0ysefafr" path="res://Components/Characters/gun_component.tscn" id="3_t5c2v"]
+[ext_resource type="PackedScene" uid="uid://bptkbyrsfsrw3" path="res://Scenes/Items/laser_shoot.tscn" id="4_tak1r"]
 [ext_resource type="Texture2D" uid="uid://bc38s50ty05si" path="res://Assets/Character/gun.png" id="4_uplrp"]
 [ext_resource type="Script" path="res://Scenes/Player/JetpackController.gd" id="5_bramg"]
 
@@ -53,10 +57,20 @@ _data = {
 "die": SubResource("Animation_mpopx")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i2usn"]
+size = Vector2(49, 127)
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 62
 script = ExtResource("1_a40bv")
-velocityFallingThreshold = 2000
+velocityFallingThreshold = 100000
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_bgutw")]
+
+[node name="GunComponent" parent="." instance=ExtResource("3_t5c2v")]
+position = Vector2(52, 7)
+laserScn = ExtResource("4_tak1r")
+mask = 1
 
 [node name="Sprites" type="Node2D" parent="."]
 
@@ -79,6 +93,14 @@ shape = SubResource("RectangleShape2D_vj5cu")
 libraries = {
 "": SubResource("AnimationLibrary_rewv3")
 }
+
+[node name="HitBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_efkpg")]
+collision_mask = 4
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_i2usn")
 
 [node name="JetpackController" type="Node" parent="."]
 script = ExtResource("5_bramg")

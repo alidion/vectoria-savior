@@ -30,3 +30,9 @@ I expect to be able to publish this game in some sort but the main reason for do
 [Vectoria Savior GDD](https://docs.google.com/document/d/16tqB3NxFhP6myFY53WGTqCsE79c7gY-7HOIu54AJulU/edit?usp=sharing)
 
 [Alidion Logs Podcast (Spanish)](https://podcasters.spotify.com/pod/show/alidion.studio)
+
+## Development notes
+
+### Building levels
+
+All levels inherits from `Scenes/Levels/base_level.tscn`

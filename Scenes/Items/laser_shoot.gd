@@ -14,5 +14,6 @@ func _on_body_entered(body):
 
 
 func _on_area_entered(area:Area2D):
-	hit.emit(self, area)
+	if area is HitBoxComponent:
+		area.damage(1)
 	queue_free()

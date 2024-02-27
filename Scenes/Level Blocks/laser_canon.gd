@@ -1,4 +1,3 @@
-@uid("uid://dqs5mio4fmfr4") # Generated automatically, do not modify.
 extends StaticBody2D
 
 signal laser_hit(body)

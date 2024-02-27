@@ -1,10 +1,9 @@
-@uid("uid://mgwyaayg1mkd") # Generated automatically, do not modify.
 extends Node2D
 
 class_name HealthComponent
 
 signal health_depleted
-signal health_changed
+signal health_changed(previous, value)
 
 @export var MAX_HEALTH = 3
 
@@ -12,8 +11,9 @@ var health:
 	get:
 		return health
 	set(value):
+		var previous = health
 		health = value
-		health_changed.emit()
+		health_changed.emit(previous, value)
 		if health <= 0:
 			health_depleted.emit()
 			die()

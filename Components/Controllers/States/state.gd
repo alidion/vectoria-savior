@@ -1,4 +1,3 @@
-@uid("uid://crl238nycismm") # Generated automatically, do not modify.
 extends Node
 class_name State
 

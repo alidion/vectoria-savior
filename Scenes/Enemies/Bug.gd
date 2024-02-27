@@ -1,4 +1,3 @@
-@uid("uid://dq2fifpwnpocv") # Generated automatically, do not modify.
 @tool
 extends CharacterBody2D
 
