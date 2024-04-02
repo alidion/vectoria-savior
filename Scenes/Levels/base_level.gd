@@ -1,11 +1,10 @@
 extends Node2D
 class_name BaseLevel
 
-const laserScn: PackedScene = preload("res://Scenes/Items/laser_shoot.tscn")
+const laserScn: PackedScene = preload ("res://Scenes/Items/laser_shoot.tscn")
 
 var player_is_on_burning_floor = false
 @export var next_level: PackedScene
-
 
 signal level_completed(nextLevel: PackedScene)
 
@@ -51,15 +50,14 @@ func setup_burning_floor():
 
 func setup_laser_cannons():
 	for laser_cannon in get_tree().get_nodes_in_group("laser_cannon"):
-		print("laser_cannon")
 		laser_cannon.connect("laser_hit", _on_cannon_laser_hit)
 
 func _on_hit_by_burning():
-	$Player.health -= 1
+	$Player.damage(1)
 
-func _on_level_end_body_entered(_body:Node2D):
+func _on_level_end_body_entered(_body: Node2D):
 	level_completed.emit(next_level)
 
 func _on_cannon_laser_hit(body):
 	if body.name == "Player":
-		$Player.health -= 1
+		$Player.damage(1)

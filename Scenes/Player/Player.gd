@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 class_name Player
 
+enum Modes {JETPACK, ATTACK}
 
 @export var WALKING_SPEED = 300.0
 @export var RUNNING_SPEED = 500.0
@@ -27,24 +28,30 @@ signal on_health_decreased()
 var isFalling = false
 var is_dead = false
 
+var current_mode: Modes = Modes.JETPACK
+
 func _ready():
 	$JetpackController.connect("on_energy_changed", _on_jetpack_energy_changed)
 	$HealthComponent.health = health
 	$HealthComponent.health_depleted.connect(die)
 	$HealthComponent.health_changed.connect(_on_health_component_health_changed)
-	gun_component = $GunComponent
+	gun_component = $Sprites/GunComponent
 
 func _process(_delta):
 	if not has_jetpack:
 		$JetpackController.energy = 0
 
-	if Input.is_action_just_pressed("FIRE") and has_gun:
+	if Input.is_action_just_pressed("FIRE") and has_gun and Modes.ATTACK == current_mode:
 		gun_component.shoot(facing_to)
+	
 	if Input.is_action_just_pressed("ACTION"):
 		on_action()
 
+	if Input.is_action_just_pressed("SWITCH_MODE"):
+		current_mode = Modes.JETPACK if Modes.ATTACK == current_mode else Modes.ATTACK
+
 func _physics_process(delta):
-	$Sprites/Gun.visible = has_gun
+	$Sprites/Gun.visible = has_gun and Modes.ATTACK == current_mode
 	$Sprites/Jetpack.visible = has_jetpack
 
 	# Add the gravity.
@@ -56,7 +63,7 @@ func _physics_process(delta):
 		isFalling = false
 		die()
 
-	if Input.is_action_pressed("JUMP") and has_jetpack:
+	if Input.is_action_pressed("JUMP") and has_jetpack and Modes.JETPACK == current_mode:
 		if $JetpackController.use(delta):
 			use_jetpack()
 	else:
@@ -68,7 +75,6 @@ func _physics_process(delta):
 
 	if Input.is_action_pressed("RUN"):
 		current_speed = RUNNING_SPEED
-
 
 	if direction:
 		velocity.x = direction * current_speed
@@ -84,7 +90,7 @@ func _physics_process(delta):
 		$Sprites.scale = Vector2(1, 1)
 	
 	if facing_to == Vector2.LEFT:
-		$Sprites.scale = Vector2(-1, 1)
+		$Sprites.scale = Vector2( - 1, 1)
 
 	move_and_slide()
 
@@ -92,24 +98,22 @@ func use_jetpack():
 	if abs(velocity.y) < MAX_JETPACK_FORCE:
 		velocity.y = velocity.y + JETPACK_FORCE
 
-
 func die():
 	if not is_dead:
 		is_dead = true
-		$AnimationPlayer.play("die")
-		await $AnimationPlayer.animation_finished
-		await get_tree().create_timer(1.0).timeout
 		get_tree().reload_current_scene()
 
 func on_action():
 	for actionable in get_tree().get_nodes_in_group("Actionable"):
-		# check if actionale is near player
+		# check if actionable is near player
 		if "on_action" in actionable and actionable.global_position.distance_to(global_position) < 89:
 			actionable.on_action()
 
 func _on_jetpack_energy_changed(value):
 	on_player_jetpack_energy_changed.emit(value)
 
+func damage(amount: int):
+	$HealthComponent.damage(amount)
 
 func _on_health_component_health_changed(previous, current):
 	on_health_changed.emit(current)

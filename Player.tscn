@@ -67,11 +67,6 @@ velocityFallingThreshold = 100000
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_bgutw")]
 
-[node name="GunComponent" parent="." instance=ExtResource("3_t5c2v")]
-position = Vector2(52, 7)
-laserScn = ExtResource("4_tak1r")
-mask = 1
-
 [node name="Sprites" type="Node2D" parent="."]
 
 [node name="Character" type="Sprite2D" parent="Sprites"]
@@ -85,6 +80,17 @@ texture = ExtResource("3_g1tpr")
 [node name="Gun" type="Sprite2D" parent="Sprites"]
 position = Vector2(22, -2)
 texture = ExtResource("4_uplrp")
+
+[node name="GunComponent" parent="Sprites" instance=ExtResource("3_t5c2v")]
+position = Vector2(52, 7)
+laserScn = ExtResource("4_tak1r")
+mask = 1
+
+[node name="Marker2D" parent="Sprites/GunComponent" index="0"]
+position = Vector2(-2, -8)
+
+[node name="GunCoolDown" parent="Sprites/GunComponent" index="1"]
+wait_time = 0.3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_vj5cu")
@@ -107,3 +113,5 @@ script = ExtResource("5_bramg")
 
 [node name="JetpackCooldown" type="Timer" parent="JetpackController"]
 wait_time = 2.0
+
+[editable path="Sprites/GunComponent"]

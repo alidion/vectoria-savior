@@ -23,7 +23,7 @@ func shoot(direction: Vector2):
 	if can_shoot:
 		var bullet = laserScn.instantiate() as Area2D
 			
-		bullet.position = marker.global_position
+		bullet.position = marker.global_position + Vector2(50, 0)
 		bullet.direction = direction
 		can_shoot = false
 		$GunCoolDown.start()
@@ -34,5 +34,5 @@ func _on_cooldown_timeout():
 
 func _get_configuration_warnings():
 	if not get_child(0) is Marker2D:
-		return [ "First child must be the marker2d from where the shoot will begin" ]
+		return ["First child must be the marker2d from where the shoot will begin"]
 	return []

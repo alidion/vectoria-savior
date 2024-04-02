@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://rpdbjwhsojq5"]
 
 [ext_resource type="Texture2D" uid="uid://cdly8cco7p8fu" path="res://Assets/Levels/Laser Canon.png" id="1_5c371"]
-[ext_resource type="Script" uid="uid://dqs5mio4fmfr4" path="res://Scenes/Level Blocks/laser_canon.gd" id="1_w6bl8"]
+[ext_resource type="Script" path="res://Scenes/Level Blocks/laser_canon.gd" id="1_w6bl8"]
 
 [node name="Laser canon" type="StaticBody2D" groups=["laser_cannon"]]
 collision_layer = 64
