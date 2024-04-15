@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmu5tctg6q7ie"]
+[gd_scene load_steps=4 format=3 uid="uid://bmu5tctg6q7ie"]
 
 [ext_resource type="PackedScene" uid="uid://7ikf57ab7dol" path="res://Scenes/Levels/base_level.tscn" id="1_uythv"]
 [ext_resource type="PackedScene" uid="uid://6er7270vh5gt" path="res://Scenes/Enemies/Human.tscn" id="2_nqb12"]
+[ext_resource type="PackedScene" uid="uid://bsgxscw6jn37h" path="res://Scenes/Enemies/bug.tscn" id="3_m6mbp"]
 
 [node name="PilotLevel" instance=ExtResource("1_uythv")]
 
@@ -10,3 +11,27 @@ layer_0/tile_data = PackedInt32Array(393212, 1, 0, 393213, 65537, 0, 393214, 655
 
 [node name="HumanEnemy2" parent="." index="10" instance=ExtResource("2_nqb12")]
 position = Vector2(588, 1474)
+
+[node name="Bug" parent="." index="11" instance=ExtResource("3_m6mbp")]
+position = Vector2(625, 346)
+scale = Vector2(1, 1)
+
+[node name="HitBoxComponent" parent="Bug" index="1" node_paths=PackedStringArray("health_component")]
+health_component = NodePath("../HealthComponent")
+
+[node name="Positions" parent="Bug" index="3"]
+position = Vector2(-110, -171)
+
+[node name="Marker2D" type="Marker2D" parent="Bug/Positions" index="0"]
+position = Vector2(-191, 255)
+
+[node name="Marker2D2" type="Marker2D" parent="Bug/Positions" index="1"]
+position = Vector2(204, -336)
+
+[node name="Marker2D3" type="Marker2D" parent="Bug/Positions" index="2"]
+position = Vector2(438, 226)
+
+[node name="Marker2D4" type="Marker2D" parent="Bug/Positions" index="3"]
+position = Vector2(507, -106)
+
+[editable path="Bug"]

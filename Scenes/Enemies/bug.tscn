@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bsgxscw6jn37h"]
 
-[ext_resource type="Script" uid="uid://mgwyaayg1mkd" path="res://Components/Characters/HealthComponent.gd" id="1_mge4l"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Bug.gd" id="1_24tvj"]
 [ext_resource type="PackedScene" uid="uid://bqtxltswsnh62" path="res://Components/Characters/health_component.tscn" id="2_lma4m"]
 [ext_resource type="Texture2D" uid="uid://rp7gb1rntyfi" path="res://Assets/Enemies/bug.png" id="2_unf64"]
 [ext_resource type="PackedScene" uid="uid://mobtq3g6bm0h" path="res://Components/Characters/hit_box_component.tscn" id="3_5hnt0"]
@@ -15,7 +15,7 @@ size = Vector2(128, 127)
 scale = Vector2(2, 2)
 collision_layer = 8
 collision_mask = 5
-script = ExtResource("1_mge4l")
+script = ExtResource("1_24tvj")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_lma4m")]
 
