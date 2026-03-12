@@ -27,12 +27,12 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6.0.2
 
       - name: Setup Godot
         uses: chickensoft-games/setup-godot@v2
         with:
-          version: "4.6"
+          version: 4.6.1
 
       - name: Install export templates
         run: |
