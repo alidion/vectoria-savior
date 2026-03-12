@@ -1,6 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://b3pso7neda21m"]
+[gd_scene format=3 uid="uid://b3pso7neda21m"]
 
-[ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1_a40bv"]
+[ext_resource type="Script" uid="uid://dn4ytidg7lglb" path="res://Scenes/Player/Player.gd" id="1_a40bv"]
 [ext_resource type="Texture2D" uid="uid://bwxjwm2h0q450" path="res://Assets/Character/character.png" id="1_u1vek"]
 [ext_resource type="PackedScene" uid="uid://mobtq3g6bm0h" path="res://Components/Characters/hit_box_component.tscn" id="2_efkpg"]
 [ext_resource type="PackedScene" uid="uid://bqtxltswsnh62" path="res://Components/Characters/health_component.tscn" id="3_bgutw"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://yq0n0ysefafr" path="res://Components/Characters/gun_component.tscn" id="3_t5c2v"]
 [ext_resource type="PackedScene" uid="uid://bptkbyrsfsrw3" path="res://Scenes/Items/laser_shoot.tscn" id="4_tak1r"]
 [ext_resource type="Texture2D" uid="uid://bc38s50ty05si" path="res://Assets/Character/gun.png" id="4_uplrp"]
-[ext_resource type="Script" path="res://Scenes/Player/JetpackController.gd" id="5_bramg"]
+[ext_resource type="Script" uid="uid://d2nj2vtrbnx0d" path="res://Scenes/Player/JetpackController.gd" id="5_bramg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vj5cu"]
 size = Vector2(48, 128)
@@ -54,34 +54,34 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rewv3"]
 _data = {
-"die": SubResource("Animation_mpopx")
+&"die": SubResource("Animation_mpopx")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i2usn"]
 size = Vector2(49, 127)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" unique_id=750687144]
 collision_mask = 62
 script = ExtResource("1_a40bv")
 velocityFallingThreshold = 100000
 
-[node name="HealthComponent" parent="." instance=ExtResource("3_bgutw")]
+[node name="HealthComponent" parent="." unique_id=1870633649 instance=ExtResource("3_bgutw")]
 
-[node name="Sprites" type="Node2D" parent="."]
+[node name="Sprites" type="Node2D" parent="." unique_id=1413652047]
 
-[node name="Character" type="Sprite2D" parent="Sprites"]
+[node name="Character" type="Sprite2D" parent="Sprites" unique_id=298243436]
 modulate = Color(0, 1, 0, 1)
 texture = ExtResource("1_u1vek")
 
-[node name="Jetpack" type="Sprite2D" parent="Sprites"]
+[node name="Jetpack" type="Sprite2D" parent="Sprites" unique_id=1410921878]
 position = Vector2(-40, -21)
 texture = ExtResource("3_g1tpr")
 
-[node name="Gun" type="Sprite2D" parent="Sprites"]
+[node name="Gun" type="Sprite2D" parent="Sprites" unique_id=1707600635]
 position = Vector2(22, -2)
 texture = ExtResource("4_uplrp")
 
-[node name="GunComponent" parent="Sprites" instance=ExtResource("3_t5c2v")]
+[node name="GunComponent" parent="Sprites" unique_id=1740636517 instance=ExtResource("3_t5c2v")]
 position = Vector2(52, 7)
 laserScn = ExtResource("4_tak1r")
 mask = 1
@@ -90,29 +90,26 @@ mask = 1
 position = Vector2(-2, -8)
 
 [node name="GunCoolDown" parent="Sprites/GunComponent" index="1"]
-wait_time = 0.5
-one_shot = true
+wait_time = 0.3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1946675561]
 shape = SubResource("RectangleShape2D_vj5cu")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_rewv3")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1975030670]
+libraries/ = SubResource("AnimationLibrary_rewv3")
 
-[node name="HitBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_efkpg")]
+[node name="HitBoxComponent" parent="." unique_id=50939897 node_paths=PackedStringArray("health_component") instance=ExtResource("2_efkpg")]
 collision_mask = 4
 health_component = NodePath("../HealthComponent")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent" unique_id=117483552]
 position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_i2usn")
 
-[node name="JetpackController" type="Node" parent="."]
+[node name="JetpackController" type="Node" parent="." unique_id=1523390038]
 script = ExtResource("5_bramg")
 
-[node name="JetpackCooldown" type="Timer" parent="JetpackController"]
+[node name="JetpackCooldown" type="Timer" parent="JetpackController" unique_id=199605266]
 wait_time = 2.0
 
 [editable path="Sprites/GunComponent"]
