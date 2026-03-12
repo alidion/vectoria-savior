@@ -90,7 +90,8 @@ mask = 1
 position = Vector2(-2, -8)
 
 [node name="GunCoolDown" parent="Sprites/GunComponent" index="1"]
-wait_time = 0.3
+wait_time = 0.5
+one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_vj5cu")
