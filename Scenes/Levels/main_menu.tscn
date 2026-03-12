@@ -1,17 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://sfvep4n54yu0"]
+[gd_scene format=3 uid="uid://sfvep4n54yu0"]
 
-[ext_resource type="Script" path="res://Scenes/Levels/main_menu.gd" id="1_h0ss4"]
+[ext_resource type="Script" uid="uid://b7kls5ik850ob" path="res://Scenes/Levels/main_menu.gd" id="1_h0ss4"]
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" unique_id=681918240]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = 24.0
+offset_right = 60.0
+offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_h0ss4")
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=715976281]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
