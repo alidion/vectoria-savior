@@ -1,0 +1,51 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: windows
+            preset: "Windows Desktop"
+          - platform: linux
+            preset: "Linux/X11"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Godot
+        uses: kamontia/godot-action@v2
+        with:
+          godot-version: "4.6"
+          is-template: false
+
+      - name: Install export templates
+        run: |
+          godot --headless --editor --export-templates
+
+      - name: Export ${{ matrix.preset }}
+        run: |
+          godot --headless --export-release "${{ matrix.preset }}" "Builds/${{ matrix.platform == 'windows' && 'Vectoria.exe' || 'vectoria-savior.x86_64' }}"
+
+      - name: Upload Windows artifact
+        if: matrix.platform == 'windows'
+        uses: actions/upload-artifact@v4
+        with:
+          name: Vectoria-Windows
+          path: Builds/Vectoria.exe
+
+      - name: Upload Linux artifact
+        if: matrix.platform == 'linux'
+        uses: actions/upload-artifact@v4
+        with:
+          name: Vectoria-Linux
+          path: Builds/vectoria-savior.x86_64
